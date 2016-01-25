@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    <string name="app_name">LiteEverNoteClient</string>
+
+    <!-- Action Bar menu -->
+    <string name="action_add">Añadir</string>
+    <string name="action_order_by_date">Ordenar por fecha</string>
+    <string name="action_order_by_title">Ordenar por título</string>
+    <string name="action_about">About</string>
+    <string name="logout_info">Se intenta cerrar sesión con Evernote</string>
+    <string name="action_logout">Cerrar sesión</string>
+    <string name="action_exit">Salir</string>
+
+    <!-- Buttons -->
+    <string name="button_ok">OK</string>
+    <string name="button_cancel">Cancelar</string>
+    <string name="button_edit">Editar</string>
+
+    <!-- Login activity -->
+    <string name="info">Bienvenid@!\n\n\nEste es un cliente para EverNote\nPodrás gestionar tus notas de una forma cómoda y sencilla\n\nAccede al servicio pulsando el botón</string>
+    <string name="sign_in">Conectar</string>
+    <string name="code_OK">Request Code Login OK</string>
+    <string name="credentials_valid">Credenciales válidos!</string>
+    <string name="credentials_invalid">Credenciales no válidos!</string>
+    <string name="error_sign_in">Error en el proceso de autenticación...</string>
+
+    <!-- Notes list activity -->
+    <string name="new_note">Nueva nota</string>
+    <string name="my_notes">Mis notas</string>
+    <string name="order_by_date">Orden por Fecha</string>
+    <string name="order_by_title">Orden por Título</string>
+    <string name="loading_list">Cargando lista...</string>
+    <string name="note_item_options_title">Opciones nota:</string>
+    <string name="note_item_option_edit">Editar</string>
+    <string name="note_item_option_view">Ver</string>
+    <string name="email_subject">%1$s</string>
+    <string name="email_body">%1$s</string>
+    <string name="email_send_title">Enviar por correo...</string>
+    <string name="email_send_error">No hay clientes de correo instalados</string>
+    <string name="new_note_created">NUEVA NOTA CREADA!</string>
+    <string name="note_edited">NOTA EDITADA!</string>
+    <string name="error_get_notes">Error al obtener la lista de notas</string>
+    <string name="error_get_content_note">Error al obtener el contenido de la nota</string>
+    <string name="error_note_created">Error al intentar crear nota</string>
+    <string name="error_note_find">Error al intentar buscar nota desde su ID</string>
+    <string name="error_note_edited">Error al intentar editar nota</string>
+    <string name="list_update_OK">LISTA ACTUALIZADA CON EXITO!</string>
+    <string name="list_update_KO">LISTA NO ACTUALIZADA!</string>
+
+    <!-- Create/Edit note activity -->
+    <string name="create_note_title">Título</string>
+    <string name="create_note_desc">Descripción</string>
+    <string name="new_note_to_create">Creando nueva nota...</string>
+    <string name="note_to_edit">Editando nota...</string>
+    <string name="save">Crear</string>
+    <string name="edit">Editar</string>
+    <string name="error_title_needed">Al menos el título es necesario para crear una nueva nota</string>
+
+    <!-- View note activity -->
+    <string name="view_note_title">Título</string>
+    <string name="view_note_desc">Descripción</string>
+
+</resources>
