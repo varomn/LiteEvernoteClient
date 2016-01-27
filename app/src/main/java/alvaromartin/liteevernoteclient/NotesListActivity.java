@@ -43,7 +43,7 @@ import alvaromartin.liteevernoteclient.utils.*;
  */
 public class NotesListActivity extends AppCompatActivity {
 
-    String tag_class = NotesListActivity.this.getClass().getSimpleName();
+    private final String tag_class = NotesListActivity.this.getClass().getSimpleName();
 
     // Actions
     public static final String ACTION_CREATE = "actionCreate";
@@ -143,6 +143,12 @@ public class NotesListActivity extends AppCompatActivity {
             mIndOrder.setText(getString(R.string.order_by_date));
         else mIndOrder.setText(getString(R.string.order_by_title));
 
+        if (mNotes.isEmpty()) { // notes list empty
+            // refresh list
+            updateListTask = new UpdateListTask();
+            updateListTask.execute();
+        }
+
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
@@ -178,11 +184,6 @@ public class NotesListActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         Log.d(tag_class, "onResume");
-        if (mNotes.isEmpty()) { // notes list empty
-            // refresh list
-            updateListTask = new UpdateListTask();
-            updateListTask.execute();
-        }
         super.onResume();
     }
 
@@ -264,7 +265,7 @@ public class NotesListActivity extends AppCompatActivity {
         // reset current notes list
         mNotes.clear();
         // check for internet and evernote session
-        if (!Utils.isInternetAvailable(NotesListActivity.this) && !EvernoteSession.getInstance().isLoggedIn()) {
+        if (!Utils.isInternetAvailable(NotesListActivity.this) || !EvernoteSession.getInstance().isLoggedIn()) {
             return false;
         }
         // get client to access primary methods for personal note data
@@ -290,7 +291,7 @@ public class NotesListActivity extends AppCompatActivity {
                 Log.e(tag_class, getString(R.string.error_get_notes), exception);
             }
         });
-        List<Note> lista = null;
+        List<Note> lista;
         try {
             // final notes list
             lista = notesAsync.get().getNotes();
@@ -300,7 +301,7 @@ public class NotesListActivity extends AppCompatActivity {
                     // get note info such as ID or title
                     String id = note.getGuid();
                     String title = note.getTitle();
-                    String content = "";
+                    String content;
                     // to get particular content note is necessary make another query
                     Future<String> noteContentAsync = noteStoreClient.getNoteContentAsync(id, new EvernoteCallback<String>() {
                         @Override
@@ -339,7 +340,7 @@ public class NotesListActivity extends AppCompatActivity {
     private void createNoteFromEvernoteCloud(String title, String description) {
         Log.d(tag_class, "createNoteFromEvernoteCloud");
         // check for internet and evernote session
-        if (!Utils.isInternetAvailable(NotesListActivity.this) && !EvernoteSession.getInstance().isLoggedIn()) {
+        if (!Utils.isInternetAvailable(NotesListActivity.this) || !EvernoteSession.getInstance().isLoggedIn()) {
             return;
         }
         // get client to access primary methods for personal note data
@@ -369,12 +370,12 @@ public class NotesListActivity extends AppCompatActivity {
     private void editNoteFromEvernoteCloud(String id, String title, String description) {
         Log.d(tag_class, "editNoteFromEvernoteCloud");
         // check for internet and evernote session
-        if (!Utils.isInternetAvailable(NotesListActivity.this) && !EvernoteSession.getInstance().isLoggedIn()) {
+        if (!Utils.isInternetAvailable(NotesListActivity.this) || !EvernoteSession.getInstance().isLoggedIn()) {
             return;
         }
         // get client to access primary methods for personal note data
         EvernoteNoteStoreClient noteStoreClient = EvernoteSession.getInstance().getEvernoteClientFactory().getNoteStoreClient();
-        Note note = null;
+        Note note;
         // query required to get a note from its ID
         final Future<Note> noteAsync = noteStoreClient.getNoteAsync(id, true, false, false, false, new EvernoteCallback<Note>() {
             @Override

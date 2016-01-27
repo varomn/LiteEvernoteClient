@@ -16,7 +16,7 @@ import alvaromartin.liteevernoteclient.utils.Constants;
  */
 public class ViewNoteActivity extends AppCompatActivity {
 
-    String tag_class = ViewNoteActivity.this.getClass().getSimpleName();
+    private final String tag_class = ViewNoteActivity.this.getClass().getSimpleName();
 
     // Text view to show note description
     private TextView mDescription;
@@ -30,6 +30,7 @@ public class ViewNoteActivity extends AppCompatActivity {
         // UI elements
         mDescription = (TextView) findViewById(R.id.view_note_desc);
         ActionBar actionBar = getSupportActionBar();
+        assert actionBar != null;
         actionBar.setDisplayHomeAsUpEnabled(true);
         // get note info from intent
         Intent noteInfo = getIntent();

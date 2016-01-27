@@ -20,7 +20,7 @@ public class Utils {
     /**
      * Log out session for evernote account and launch initial activity to start process
      *
-     * @param activity
+     * @param activity Activity to launch
      */
     public static void logout(Activity activity) {
         EvernoteSession.getInstance().logOut();
@@ -59,10 +59,10 @@ public class Utils {
     /**
      * Save a given Boolean value in Shared Preferences
      *
-     * @param context
-     * @param sharedPreferencesName
-     * @param key
-     * @param value
+     * @param context of the application
+     * @param sharedPreferencesName Name for a sharedPreference
+     * @param key key for a sharedPreference
+     * @param value value for a sharedPreference
      */
     public static void saveInSharedPreferences(Context context, String sharedPreferencesName, String key, boolean value) {
         SharedPreferences settings = context.getSharedPreferences(sharedPreferencesName, 0);
@@ -79,6 +79,6 @@ public class Utils {
     public static boolean isInternetAvailable(Context context) {
         ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo netInfo = cm.getActiveNetworkInfo();
-        return netInfo != null && netInfo.isConnectedOrConnecting();
+        return (netInfo != null && netInfo.isConnectedOrConnecting());
     }
 }

@@ -16,7 +16,7 @@ import alvaromartin.liteevernoteclient.utils.*;
  */
 public class CreateEditNoteActivity extends Activity {
 
-    String tag_class = CreateEditNoteActivity.this.getClass().getSimpleName();
+    private final String tag_class = CreateEditNoteActivity.this.getClass().getSimpleName();
 
     // Edit Text to show title and description
     private EditText mTitle;
